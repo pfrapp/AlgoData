@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "hanoi.h"
 
+int counter;
+
 void hanoi(int n, char A, char B, char C)
 {
     if (n == 1)

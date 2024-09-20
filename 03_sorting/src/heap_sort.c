@@ -1,4 +1,4 @@
-#include "heapsort.h"
+#include "heap_sort.h"
 #include "array_utility.h"
 
 void downheap(char a[], int l, int q, int r) {
@@ -19,7 +19,7 @@ void buildheap(char a[], int l, int r) {
     }
 }
 
-void heapsort(char a[], int l, int r) {
+void heap_sort(char a[], int l, int r) {
     buildheap(a, l, r);
     for (int i = r; i>l; --i) {
         array_swap(a, l, i);

@@ -1,4 +1,4 @@
-#include "mergesort.h"
+#include "merge_sort.h"
 
 void merge(char a[], char b[], int l, int q, int r)
 {
@@ -38,12 +38,12 @@ void merge(char a[], char b[], int l, int q, int r)
     }
 }
 
-void mergesort(char a[], char b[], int l, int r)
+void merge_sort(char a[], char b[], int l, int r)
 {
     if (l < r) {
         int q = (l + r) / 2;
-        mergesort(a, b, l, q);
-        mergesort(a, b, q + 1, r);
+        merge_sort(a, b, l, q);
+        merge_sort(a, b, q + 1, r);
         merge(a, b, l, q, r);
     }
 }

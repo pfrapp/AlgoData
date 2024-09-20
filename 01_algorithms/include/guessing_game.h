@@ -1,7 +1,7 @@
 #ifndef GUESSING_GAME_H_
 #define GUESSING_GAME_H_
 
-int secret_number;
+extern int secret_number;
 
 int response(int guess);
 int find_number_bf(int min_number, int max_number);
