@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "array_utility.h"
 #include "heap_sort.h"
-#include "mergesort.h"
+#include "merge_sort.h"
 #include "quicksort.h"
 
 void clear_input_buffer()
@@ -30,7 +30,7 @@ int main()
 		{
 		case '1': {
 			char* temp = (char*)malloc(sizeof(data));
-			mergesort(data, temp, 0, sizeof(data) - 1);
+			merge_sort(data, temp, 0, sizeof(data) - 1);
 			free(temp);
 			break;
 		}
