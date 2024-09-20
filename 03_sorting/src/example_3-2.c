@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "array_utility.h"
-#include "heapsort.h"
+#include "heap_sort.h"
 #include "mergesort.h"
 #include "quicksort.h"
 
@@ -39,7 +39,7 @@ int main()
 			break;
 		}
 		case '3': {
-			heapsort(data, 0, sizeof(data) - 1);
+			heap_sort(data, 0, sizeof(data) - 1);
 			break;
 		}
 		default:

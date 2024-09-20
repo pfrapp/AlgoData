@@ -15,7 +15,7 @@ add_executable(exercise_3-1
 
 add_executable(example_3-2 
     src/array_utility.c
-    src/heapsort.c
+    src/heap_sort.c
     src/mergesort.c
     src/quicksort.c
     src/example_3-2.c
