@@ -1,7 +1,7 @@
 #ifndef HANOI_H_
 #define HANOI_H_
 
-int counter;
+extern int counter;
 
 /**
  * Solves the Towers of Hanoi problem with n disks

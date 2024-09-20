@@ -1,5 +1,7 @@
 #include "guessing_game.h"
 
+int secret_number;
+
 /**
  * Response of player A
  *
