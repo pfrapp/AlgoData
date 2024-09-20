@@ -1,0 +1,6 @@
+Host pi_lab
+	HostName raspberrypi.local
+	User fomuser
+	IdentityFile ~/.ssh/id_rsa_pi_lab
+	ServerAliveInterval 30
+	ServerAliveCountMax 5
