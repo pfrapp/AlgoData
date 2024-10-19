@@ -55,7 +55,35 @@ int find_number_bf(int min_number, int max_number)
  */
 int find_number_dc(int min_number, int max_number)
 {
-	// TODO: Übung 1.2 (1b)
+	// Uebung 1.2 (1b)
+
+	// Center of bisectioning.
+	int separation;
+
+	// Answer/reponse.
+	int resp;
+
+	while(1) {
+
+		separation = (min_number + max_number) / 2;
+		resp = response(separation);
+
+		switch(resp) {
+			case 0:
+				return separation;
+			case 1:
+				// Guess is less than secret number.
+				// Secret number is bigger.
+				min_number = separation;
+				break;
+
+			case -1:
+				// Guess is greater than secret number.
+				// Secret number is smaller.
+				max_number = separation;
+				break;
+		}
+	}
 
 	return -1;
 }
