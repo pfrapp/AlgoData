@@ -30,7 +30,22 @@ int response(int guess)
  */
 int find_number_bf(int min_number, int max_number)
 {
-	// TODO: Übung 1.2 (1a)
+	// Uebung 1.2 (1a)
+
+	// Use this variable for the given response.
+	int resp;
+
+	// Current guess
+	int current_guess;
+
+	for (current_guess = min_number; current_guess <= max_number; current_guess++) {
+		// Ask about the secret number.
+		resp = response(current_guess);
+
+		if (resp == 0) {
+			return current_guess;
+		}
+	}
 
 	return -1;
 }
