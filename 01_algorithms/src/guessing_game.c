@@ -74,6 +74,9 @@ int find_number_dc(int min_number, int max_number)
 			case 1:
 				// Guess is less than secret number.
 				// Secret number is bigger.
+
+				// min_number rueckt auf separation auf,
+				// um das Intervall zu schachteln.
 				min_number = separation;
 				break;
 
