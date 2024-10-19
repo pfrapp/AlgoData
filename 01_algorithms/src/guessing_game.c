@@ -90,3 +90,26 @@ int find_number_dc(int min_number, int max_number)
 
 	return -1;
 }
+
+int find_number_dcr(int min_number, int max_number) {
+	int separation;
+	int resp;
+
+	separation = (min_number + max_number) / 2;
+	resp = response(separation);
+
+	if (0 == resp) {
+		return separation;
+	} else if (1 == resp) {
+		// Guess is less than secret number.
+		// Secret number is bigger.
+
+		// Intervall
+		// [separation, max_number]
+		return find_number_dcr(separation, max_number);
+	} else if (-1 == resp) {
+		return find_number_dcr(min_number, separation);
+	}
+
+	return -1;
+}
