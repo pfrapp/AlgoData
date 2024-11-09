@@ -50,7 +50,10 @@ void array_resize(Array* a, int new_capacity)
 
 void array_insert(Array *a, int idx, char value)
 {
-    // TODO: Übung 2.1 (2)
+    // Uebung 2.1 (2)
+    if (a->size >= a->capacity) {
+        array_resize(a, 2*a->capacity);
+    }
 
     // Copy all elements after idx to the right
     for (int i = a->size; i > idx; --i)
@@ -77,7 +80,14 @@ char array_remove(Array* a, int idx)
         a->elements[ii] = a->elements[ii+1];
     }
 
-    // TODO: Übung 2.1 (2)
+    // Uebung 2.1 (2)
+    if (a->size <= a->capacity / 4) {
+        int new_capacity = a->capacity / 2;
+        if (new_capacity < 1) {
+            new_capacity = 1;
+        }
+        array_resize(a, new_capacity);
+    }
 
     return '\0';
 }
