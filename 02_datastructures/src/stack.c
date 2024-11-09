@@ -19,18 +19,20 @@ bool stack_empty(Stack* s)
 
 void stack_push(Stack* s, char value)
 {
-    // TODO: Übung 2.3 (1a)
+    list_push_front(s->list, value);
 }
 
 char stack_top(Stack* s)
 {
     char value = '\0';
-    // TODO: Übung 2.3 (1a)
+    if (!stack_empty(s))
+    {
+        value = s->list->head->next->value;
+    }
     return value;
 }
 
 char stack_pop(Stack* q)
 {
-    // TODO: Übung 2.3 (1a)
-    return '\0';
+    return list_pop_front(q->list);
 }

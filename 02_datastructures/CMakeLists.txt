@@ -9,6 +9,10 @@ add_executable(exercise_2-1
     src/array.c
     src/exercise_2-1.c
 )
+add_executable(exercise_2-1-extra
+    src/circular_array.c
+    src/exercise_2-1-extra.c
+)
 add_executable(exercise_2-2 
     src/list.c
     src/exercise_2-2.c
