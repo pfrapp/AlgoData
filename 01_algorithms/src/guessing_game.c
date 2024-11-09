@@ -30,9 +30,14 @@ int response(int guess)
  */
 int find_number_bf(int min_number, int max_number)
 {
-	// TODO: Übung 1.2 (1a)
-
-	return -1;
+	for (int guess = min_number; guess <= max_number; guess++)
+	{
+		if (response(guess) == 0)
+		{
+			return guess;
+		}
+	}
+	return -1; // Number not found. Should never happen.
 }
 
 /**
@@ -40,7 +45,45 @@ int find_number_bf(int min_number, int max_number)
  */
 int find_number_dc(int min_number, int max_number)
 {
-	// TODO: Übung 1.2 (1b)
+	int result = 0;
+	int guess = 0;
+	do {
+		guess = (max_number + min_number) / 2;
+		result = response(guess);
+		if (result > 0)
+		{
+			// Number is greater than guess, increase min_number
+			min_number = guess + 1;
+		}
+		else if (result < 0)
+		{
+			// Number is less than guess, decrease max_number
+			max_number = guess - 1;
+		}
+	} while (result != 0);
 
-	return -1;
+	return guess;
+}
+
+/**
+ * Find number using a recursive divide-and-conquer approach
+ */
+int find_number_dcr(int min_number, int max_number)
+{
+	int guess = (max_number + min_number) / 2;
+	int result = response(guess);
+	if (result > 0)
+	{
+		// Number is greater than guess, increase min_number
+		return find_number_dcr(guess + 1, max_number);
+	}
+	else if (result < 0)
+	{
+		// Number is less than guess, decrease max_number
+		return find_number_dcr(min_number, guess - 1);
+	}
+	else // result == 0
+	{
+		return guess;
+	}
 }
