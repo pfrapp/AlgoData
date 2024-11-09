@@ -4,6 +4,8 @@
 
 void array_print(Array* a)
 {
+    printf("Capacity: %i, Size: %i\n",
+            a->capacity, a->size);
     for (int i = 0; i < a->capacity; i++)
     {
         if (i < a->size)
@@ -63,6 +65,7 @@ void array_insert(Array *a, int idx, char value)
     // Insert new element at idx
     a->elements[idx] = value;
     a->size++;
+    printf("New size: %i\n", a->size);
 }
 
 char array_remove(Array* a, int idx)
