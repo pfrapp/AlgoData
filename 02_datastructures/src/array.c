@@ -64,7 +64,18 @@ void array_insert(Array *a, int idx, char value)
 
 char array_remove(Array* a, int idx)
 {
-    // TODO: Übung 2.1 (1)
+    // Uebung 2.1 (1)
+    // Save element to be removed
+    char removed_element = a->elements[idx];
+    // Decrement size
+    a->size--;
+    // Copy elements from right to left, that is,
+    // start with the left-most element
+    // in order to not overwrite the elements
+    // too early.
+    for (int ii = idx; ii < a->size; ii++) {
+        a->elements[ii] = a->elements[ii+1];
+    }
 
     // TODO: Übung 2.1 (2)
 
