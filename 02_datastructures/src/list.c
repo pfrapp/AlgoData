@@ -4,7 +4,7 @@
 
 void list_init(List* l)
 {
-    l->head = (ListItem*) malloc(1);
+    l->head = (ListItem*) malloc(sizeof(ListItem));
     l->head->next = NULL;
     l->head->value = '\0';
 }
@@ -40,9 +40,29 @@ ListItem* list_insert_after(List* l, ListItem* item, char value)
 
 char list_remove_after(List* l, ListItem* item)
 {
-    // TODO: Übung 2.2 (1)
+    // TODO: Uebung 2.2 (1)
 
-    return '\0';
+    // Siehe Folie 57 (Einfuegen und Loeschen
+    // bei verketten Listen)
+
+    // Im Bsp. auf der Folie ist das
+    // 'item_to_be_removed' gleich Sophie.
+    // 'item' entspricht Anna.
+    // (Im Bsp. haben sind die Werte vom Typ
+    // String, hier im Code haben wir characters)
+    ListItem* item_to_be_removed = item->next;
+    char return_value = '\0';
+
+    if (item_to_be_removed != NULL) {
+        // Anna zeigt jetzt auf Klaus.
+        item->next = item_to_be_removed->next;
+        return_value = item_to_be_removed->value;
+        // Speicher freigeben
+        // (Speicher an das OS zurueckgegben)
+        free(item_to_be_removed);
+    }
+
+    return return_value;
 }
 
 ListItem* list_push_front(List* l, char value)
@@ -57,7 +77,7 @@ char list_pop_front(List* l)
 
 ListItem* list_push_back(List* l, char value)
 {
-    // TODO: Übung 2.2 (2)
-    // Hinweis: Überprüfen Sie auch die Implementierung von list_init, 
+    // TODO: ï¿½bung 2.2 (2)
+    // Hinweis: ï¿½berprï¿½fen Sie auch die Implementierung von list_init, 
     // list_print, list_empty, list_insert_after und list_remove_after
 }

@@ -16,8 +16,17 @@ int main()
     }
 
     // Insert an element after the last inserted element
-    list_insert_after(&my_list, item, 'x');
+    printf("Inserting x\n");
+    item = list_insert_after(&my_list, item, 'x');
     list_print(&my_list);
+
+    // Remove after the newly inserted item.
+    // (muss noch implementiert werden)
+    printf("Removing element\n");
+    char value = list_remove_after(&my_list, item);
+    printf("Removed element with value %c\n", value);
+    list_print(&my_list);
+    return 0;
 
     // Insert some elements at the back (requires tail!)
     for (char c = 'd'; c < 'g'; c++)
