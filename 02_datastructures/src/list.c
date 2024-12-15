@@ -5,18 +5,21 @@
 void list_init(List* l)
 {
     l->head = (ListItem*) malloc(1);
-    l->head->next = NULL;
+    l->tail = (ListItem*) malloc(1);
+    l->head->next = l->tail;
+    l->tail->next = l->head;
     l->head->value = '\0';
+    l->tail->value = '\0';
 }
 
 void list_print(List* l)
 {
     ListItem* item = l->head;
-    while (item->next != NULL)
+    while (item->next != l->tail)
     {
         item = item->next;
         printf("%c", item->value);
-        if (item->next != NULL)
+        if (item->next != l->tail)
         {
             printf(", ");
         }
@@ -26,7 +29,7 @@ void list_print(List* l)
 
 bool list_empty(List* l)
 {
-    return l->head->next == NULL;
+    return l->head->next == l->tail;
 }
 
 ListItem* list_insert_after(List* l, ListItem* item, char value)
@@ -35,14 +38,22 @@ ListItem* list_insert_after(List* l, ListItem* item, char value)
     new_item->value = value;
     new_item->next = item->next;
     item->next = new_item;
+    if (new_item->next == l->tail) l->tail->next = new_item;
     return new_item;
 }
 
 char list_remove_after(List* l, ListItem* item)
 {
-    // TODO: Übung 2.2 (1)
-
-    return '\0';
+    ListItem* del_item = item->next;
+    char value = '\0';
+    if (del_item != l->tail)
+    {
+        value = del_item->value;
+        item->next = del_item->next;
+        if (item->next == l->tail) l->tail->next = item;
+        free(del_item);
+    }
+    return value;
 }
 
 ListItem* list_push_front(List* l, char value)
@@ -57,7 +68,5 @@ char list_pop_front(List* l)
 
 ListItem* list_push_back(List* l, char value)
 {
-    // TODO: Übung 2.2 (2)
-    // Hinweis: Überprüfen Sie auch die Implementierung von list_init, 
-    // list_print, list_empty, list_insert_after und list_remove_after
+    return list_insert_after(l, l->tail->next, value);
 }

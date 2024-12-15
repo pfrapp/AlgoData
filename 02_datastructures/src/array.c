@@ -26,7 +26,7 @@ void array_init(Array *a, int capacity)
 {
     a->capacity = capacity;
     a->size = 0;
-    a->elements = (char*) malloc(capacity * sizeof(char));
+    a->elements = (char*) malloc(capacity);
 }
 
 void array_resize(Array* a, int new_capacity)
@@ -34,7 +34,7 @@ void array_resize(Array* a, int new_capacity)
     if (new_capacity != a->capacity)
     {
         // Allocate new memory
-        char *new_elements = (char*) malloc(new_capacity * sizeof(char));
+        char* new_elements = (char*)malloc(new_capacity);
         // Copy data from old to new memory
         for (int i = 0; i < a->size; ++i)
         {
@@ -50,7 +50,13 @@ void array_resize(Array* a, int new_capacity)
 
 void array_insert(Array *a, int idx, char value)
 {
-    // TODO: Übung 2.1 (2)
+    // Increase size if necessary
+    if (a->size >= a->capacity)
+    {
+        int new_capacity = 2 * a->capacity;
+        if (new_capacity == 0) new_capacity = 1;
+        array_resize(a, new_capacity);
+    }
 
     // Copy all elements after idx to the right
     for (int i = a->size; i > idx; --i)
@@ -64,11 +70,25 @@ void array_insert(Array *a, int idx, char value)
 
 char array_remove(Array* a, int idx)
 {
-    // TODO: Übung 2.1 (1)
+    // Save element to be removed
+    char temp = a->elements[idx];
 
-    // TODO: Übung 2.1 (2)
+    // Copy all elements after idx to the left, overriding the element to be removed
+    a->size--;
+    for (int i = idx; i < a->size; ++i)
+    {
+        a->elements[i] = a->elements[i + 1];
+    }
 
-    return '\0';
+    // Shrink if needed
+    if (a->size <= a->capacity / 4)
+    {
+        int new_capacity = a->capacity / 2;
+        if (new_capacity == 0) new_capacity = 1;
+        array_resize(a, new_capacity);
+    }
+
+    return temp;
 }
 
 void array_push_back(Array* a, char value)

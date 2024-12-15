@@ -14,6 +14,7 @@ typedef struct List List;
 struct List
 {
     ListItem* head;
+    ListItem* tail;
 };
 
 void list_init(List *l);
@@ -24,5 +25,6 @@ char list_remove_after(List* l, ListItem* item);
 ListItem* list_push_front(List* l, char value);
 char list_pop_front(List* l);
 ListItem* list_push_back(List* l, char value);
+char list_pop_back(List* l);
 
 #endif // LIST_H_

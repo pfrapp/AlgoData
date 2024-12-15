@@ -19,18 +19,20 @@ bool queue_empty(Queue* q)
 
 void queue_enqueue(Queue* q, char value)
 {
-    // TODO: Übung 2.3 (1b)
+    list_push_back(q->list, value);
 }
 
 char queue_peek(Queue* q)
 {
     char value = '\0';
-    // TODO: Übung 2.3 (1b)
+    if (!queue_empty(q))
+    {
+        value = q->list->head->next->value;
+    }
     return value;
 }
 
 char queue_dequeue(Queue* q)
 {
-    // TODO: Übung 2.3 (1b)
-    return '\0';
+    return list_pop_front(q->list);
 }
